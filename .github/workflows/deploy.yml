@@ -22,10 +22,13 @@ jobs:
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
+      - name: Print environment variables # Optional debugging step
+        run: printenv
+
       - name: Build project
         run: npm run build
         env:
-          API_KEY: ${{ secrets.VITE_API_KEY }} # Access the API key from GitHub secrets
+          VITE_API_KEY: ${{secrets.VITE_API_KEY}} # Access the API key from GitHub secrets
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
